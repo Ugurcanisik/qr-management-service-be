@@ -64,7 +64,6 @@ export class User extends Model {
     @Column(DataType.DATE)
     updatedAt: Date;
 
-    @Default(() => dateHelper.nowDateWithToDate())
     @Column(DataType.DATE)
     deletedAt: Date;
 
