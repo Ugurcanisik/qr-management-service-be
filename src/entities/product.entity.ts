@@ -20,7 +20,7 @@ import { productHistory as productHistoryRepository } from '@repositories';
     tableName: 'Product',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    deletedAt: false
+    deletedAt: 'deletedAt'
 })
 export class Product extends Model {
     @PrimaryKey
@@ -54,9 +54,11 @@ export class Product extends Model {
     @Column
     categoryNumber: string;
 
+    @Default(false)
     @Column(DataType.BOOLEAN)
     isActive: boolean;
 
+    @AllowNull(false)
     @Column(DataType.INTEGER)
     rank: number;
 
@@ -67,6 +69,10 @@ export class Product extends Model {
     @Default(() => dateHelper.nowDateWithToDate())
     @Column(DataType.DATE)
     updatedAt: Date;
+
+    @Default(() => dateHelper.nowDateWithToDate())
+    @Column(DataType.DATE)
+    deletedAt: Date;
 
     @BelongsTo(() => Category, {
         targetKey: 'categoryNumber'

@@ -18,7 +18,7 @@ import { crypto as cryptoUtil } from '@utils';
     tableName: 'User',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    deletedAt: false
+    deletedAt: 'deletedAt'
 })
 export class User extends Model {
     @PrimaryKey
@@ -48,6 +48,7 @@ export class User extends Model {
     @Column(DataType.STRING)
     password: string;
 
+    @AllowNull(false)
     @Column(DataType.STRING)
     token: string;
 
@@ -62,6 +63,10 @@ export class User extends Model {
     @Default(() => dateHelper.nowDateWithToDate())
     @Column(DataType.DATE)
     updatedAt: Date;
+
+    @Default(() => dateHelper.nowDateWithToDate())
+    @Column(DataType.DATE)
+    deletedAt: Date;
 
     @BeforeCreate
     @BeforeUpdate

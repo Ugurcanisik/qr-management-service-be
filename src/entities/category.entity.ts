@@ -15,7 +15,7 @@ import { date as dateHelper } from '@helpers';
     tableName: 'Category',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    deletedAt: false
+    deletedAt: 'deletedAt'
 })
 export class Category extends Model {
     @PrimaryKey
@@ -32,9 +32,11 @@ export class Category extends Model {
     @Column(DataType.STRING)
     name: string;
 
+    @Default(false)
     @Column(DataType.BOOLEAN)
     isActive: boolean;
 
+    @AllowNull(false)
     @Column(DataType.INTEGER)
     rank: number;
 
@@ -45,4 +47,8 @@ export class Category extends Model {
     @Default(() => dateHelper.nowDateWithToDate())
     @Column(DataType.DATE)
     updatedAt: Date;
+
+    @Default(() => dateHelper.nowDateWithToDate())
+    @Column(DataType.DATE)
+    deletedAt: Date;
 }
