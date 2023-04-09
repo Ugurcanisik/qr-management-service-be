@@ -1,4 +1,5 @@
 import { ICategory } from '@interfaces/category';
+import { ProductAbstract } from '@models/classes/product/product';
 
 export abstract class CategoryAbstract implements ICategory {
     abstract setActive(value: boolean): void;
@@ -12,6 +13,8 @@ export abstract class CategoryAbstract implements ICategory {
     name: string;
     rank: number;
     updatedAt: Date;
+    deletedAt: Date;
+    products: Array<ProductAbstract>;
 }
 
 export class Category extends CategoryAbstract {
@@ -22,6 +25,8 @@ export class Category extends CategoryAbstract {
     name: string;
     rank: number;
     updatedAt: Date;
+    deletedAt: Date;
+    products: Array<ProductAbstract>;
 
     setActive(value: boolean) {
         this.isActive = value;

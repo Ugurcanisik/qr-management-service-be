@@ -10,7 +10,11 @@ export interface IProduct {
     categoryNumber: string;
     isActive: boolean;
     rank: number;
+
+    category?: ICategory;
+
     createdAt: Date;
     updatedAt: Date;
-    category?: ICategory;
+
+    deletedAt: Date;
 }

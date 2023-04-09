@@ -7,9 +7,12 @@ import {
     Default,
     AllowNull,
     PrimaryKey,
-    AutoIncrement
+    AutoIncrement,
+    BelongsTo,
+    HasMany
 } from 'sequelize-typescript';
 import { date as dateHelper } from '@helpers';
+import { Product } from './product.entity';
 
 @Table({
     tableName: 'Category',
@@ -50,4 +53,9 @@ export class Category extends Model {
 
     @Column(DataType.DATE)
     deletedAt: Date;
+
+    @HasMany(() => Product, {
+        sourceKey: 'categoryNumber'
+    })
+    products?: Array<Product>;
 }
