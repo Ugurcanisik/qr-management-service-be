@@ -25,27 +25,23 @@ export class ProductHistory extends Model {
 
     @AllowNull(false)
     @Unique
-    @Column(DataType.STRING)
+    @Column(DataType.STRING(10))
     productNumber: string;
 
     @AllowNull(false)
     @Column(DataType.STRING)
     name: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     imageUrl: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     price: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     description: string;
 
-    @AllowNull(false)
-    @Column(DataType.STRING)
+    @Column(DataType.STRING(10))
     categoryNumber: string;
 
     @Column(DataType.BOOLEAN)

@@ -25,7 +25,7 @@ export class Category extends Model {
 
     @AllowNull(false)
     @Unique
-    @Column(DataType.STRING)
+    @Column(DataType.STRING(10))
     categoryNumber: string;
 
     @AllowNull(false)

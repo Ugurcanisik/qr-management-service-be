@@ -10,7 +10,8 @@ import {
     PrimaryKey,
     AutoIncrement,
     ForeignKey,
-    BelongsTo
+    BelongsTo,
+    AfterCreate
 } from 'sequelize-typescript';
 import { date as dateHelper } from '@helpers';
 import { Category } from '@entities';
@@ -30,22 +31,19 @@ export class Product extends Model {
 
     @AllowNull(false)
     @Unique
-    @Column(DataType.STRING)
+    @Column(DataType.STRING(10))
     productNumber: string;
 
     @AllowNull(false)
     @Column(DataType.STRING)
     name: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     imageUrl: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     price: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     description: string;
 
@@ -78,6 +76,7 @@ export class Product extends Model {
     })
     category?: Category;
 
+    @AfterCreate
     @AfterUpdate
     static async historyRecords(instance: Product) {
         const { productNumber, name, imageUrl, price, description, categoryNumber, isActive } = instance.dataValues;
