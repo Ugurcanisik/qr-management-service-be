@@ -4,10 +4,6 @@ import { plainToClass } from 'class-transformer';
 import { LoginDTO, BaseResponse, InternalError } from '@models/classes';
 import { authentication as authenticationService } from '@services';
 
-// import { matchedData } from 'express-validator';
-// const data = matchedData(req, { locations: ['params'] });
-// const { phone } = plainToClass(VerifyDTO, data);
-
 const login = async (req: Request, res: Response) => {
     const loginRequest = plainToClass(LoginDTO, req.body);
     try {

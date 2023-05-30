@@ -5,6 +5,8 @@ export abstract class UserAbstract implements IUser {
 
     abstract minimalDetail(): void;
 
+    abstract setToken(token: string): void;
+
     createdAt: Date;
     firstName: string;
     id: number;
@@ -31,6 +33,10 @@ export class User extends UserAbstract {
 
     setActive(value: boolean) {
         this.isActive = value;
+    }
+
+    setToken(token: string) {
+        this.token = token;
     }
 
     minimalDetail() {

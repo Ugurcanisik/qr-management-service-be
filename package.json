@@ -6,7 +6,8 @@
     "start:dev": "ts-node -r tsconfig-paths/register src/app.ts",
     "start:prod": "ttsc -P ./tsconfig.json && node --unhandled-rejections=strict ./dist/src/app.js",
     "build": "ttsc -P ./tsconfig.json",
-    "start": "node --unhandled-rejections=strict ./dist/src/app.js"
+    "start": "node --unhandled-rejections=strict ./dist/src/app.js",
+    "testwatch": "nodemon --exec mocha --parallel -r ts-node/register ./dist/test/**/*.test.js --exit --timeout 10000 --recursive --tls-min-v1.0"
   },
   "dependencies": {
     "axios": "^1.2.1",
@@ -24,33 +25,41 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.38",
     "nanoid": "^3.0.0",
+    "nodemon": "^2.0.22",
     "pg": "^8.8.0",
     "randomstring": "^1.2.3",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.28.0",
     "sequelize-typescript": "^2.1.5",
+    "supertest": "^6.3.3",
     "winston": "^3.8.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/chai": "^4.3.5",
     "@types/cors": "^2.8.12",
     "@types/debug": "^4.1.7",
     "@types/express": "^4.17.15",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/lodash": "^4.14.191",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.17",
     "@types/randomstring": "^1.1.8",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.33.1",
     "@zerollup/ts-transform-paths": "^1.7.18",
+    "chai": "^4.3.7",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
     "ttypescript": "^1.5.13",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "typescript-transform-paths": "^3.4.6"
   }
 }

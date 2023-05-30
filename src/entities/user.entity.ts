@@ -48,7 +48,6 @@ export class User extends Model {
     @Column(DataType.STRING)
     password: string;
 
-    @AllowNull(false)
     @Column(DataType.STRING)
     token: string;
 

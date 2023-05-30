@@ -6,12 +6,19 @@ import * as categoryValidation from '@validations/category';
 
 const route = Router();
 
-route.get('/', categoryController.getAllCategory);
+route.get('/', authMW(), categoryController.getAllCategory);
 
-route.get('/:categoryNumber', requestValidator(categoryValidation.getCategory), categoryController.getCategory);
+route.get('/:categoryNumber', authMW(), requestValidator(categoryValidation.get), categoryController.getCategory);
 
-// import { matchedData } from 'express-validator';
-// const data = matchedData(req, { locations: ['params'] });
-// category/:categoryNumber daki categoryNumber almak için yukarı kod bloğunu kullanabilirsiniz.
+route.post('/', authMW(), requestValidator(categoryValidation.create), categoryController.createCategory);
+
+route.patch(
+    '/:categoryNumber',
+    authMW(),
+    requestValidator(categoryValidation.update),
+    categoryController.updateCategory
+);
+
+route.delete('/:categoryNumber', authMW(), requestValidator(categoryValidation.get), categoryController.deleteCategory);
 
 export default route;
